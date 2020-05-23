@@ -26,9 +26,7 @@ class Season extends Component {
                 `Corrida ${race.round}\nCircuito: ${race.Circuit.circuitName}\nPais: ${race.Circuit.Location.country}\nData: ${race.date}\nHora: ${race.time}` } 
             ))
 
-        return (
-            <Accordion dataArray={accordionItens} expanded={0} />
-            )
+        return (<Accordion dataArray={accordionItens} expanded={0} />)
     }
 
     render() {
