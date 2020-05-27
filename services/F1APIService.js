@@ -14,4 +14,19 @@ export class F1APIService {
             }
         )
     }
+    getSeasons(offset) {
+        return new Promise(
+            (resolve, reject) => {
+                fetch(`http://ergast.com/api/f1/seasons.json?limit=10&offset=${offset}`)
+                .then(res => res.json())
+                .then(seassons => {
+                    resolve(seassons['MRData']['SeasonTable']['Seasons'])
+                })
+                .catch(err => {
+                    console.error(err)
+                    reject("Erro ao buscar API")
+                })
+            }
+        )
+    }
 }

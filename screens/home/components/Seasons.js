@@ -10,14 +10,16 @@ const style = StyleSheet.create({
     }
 });
 
-const years = [ '2020', '2019', '2018', '2017' ]
+const Seasons = ({ data, handlerSeason }) => {
 
-const Seasons = ({ handlerSeason }) => {
-    return years.map(year => ( 
-        <Button key={year} style={style.button} onPress={ () => handlerSeason('Season', { year })} >
-            <Text>{ year }</Text>
+    data = data.reverse()
+
+    return data.map(year => (
+        <Button key={year.season} style={style.button} onPress={ () => handlerSeason('Season', { year })} >
+            <Text>{ year.season }</Text>
         </Button> 
     ));
+
 }
 
 export default Seasons;

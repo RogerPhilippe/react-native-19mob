@@ -6,11 +6,11 @@ import { F1APIService } from '../../services/F1APIService';
 class Season extends Component {
 
     state = {
-        races: [],
+        races: []
     }
 
     componentDidMount() {
-        new F1APIService().getSeasonInfo(this.props.route.params.year)
+        new F1APIService().getSeasonInfo(this.props.route.params.year.season)
         .then(seasonInfo => this.setState({ races: seasonInfo }) )
         .catch(error => console.error(error) )
     }
