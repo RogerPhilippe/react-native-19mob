@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Accordion } from "native-base";
-import { Text, View } from 'react-native';
+import { Container, Header, Content, Accordion, View, Spinner } from "native-base";
 import { F1APIService } from '../../services/F1APIService';
 
 class Season extends Component {
 
     state = {
-        races: []
+        races: [],
+        loading: true
     }
 
     componentDidMount() {
         new F1APIService().getSeasonInfo(this.props.route.params.year.season)
-        .then(seasonInfo => this.setState({ races: seasonInfo }) )
+        .then(seasonInfo => this.setState({ races: seasonInfo, loading: false }) )
         .catch(error => console.error(error) )
     }
 
@@ -31,12 +31,18 @@ class Season extends Component {
 
     render() {
         return(
-            <Container>
-                <Header />
-                <Content padder>
-                    { this.renderRaces() }
-                </Content>
-            </Container>
+            <View>
+                { 
+                    this.state.loading ? 
+                    <Spinner color='green'/> : 
+                    <Container>
+                        <Header />
+                        <Content padder>
+                            { this.renderRaces() }
+                        </Content>
+                    </Container>
+                 }
+            </View>
         );
     }
 }
