@@ -16,7 +16,7 @@ const Header = () => {
         <View>
             <Image 
                 style={styles.tinyLogo}
-                source={require('../assets/f1-logo.png')} 
+                source={f1logo} 
             />
         </View>
     );
