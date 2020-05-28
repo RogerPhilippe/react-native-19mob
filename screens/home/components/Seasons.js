@@ -16,7 +16,7 @@ const Seasons = ({ data, handlerSeason }) => {
 
     return data.map(year => (
         <Button key={year.season} style={style.button} onPress={ () => handlerSeason('Season', { year })} >
-            <Text>{ year.season }</Text>
+            <Text uppercase="true">{ year.season }</Text>
         </Button> 
     ));
 
