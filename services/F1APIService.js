@@ -29,4 +29,19 @@ export class F1APIService {
             }
         )
     }
+    getPilots(year) {
+        return new Promise(
+            (resolve, reject) => {
+                fetch(`https://ergast.com/api/f1/${year}/drivers.json`)
+                .then(res => res.json())
+                .then(pilots => {
+                    resolve(pilots['MRData']['DriverTable']['Drivers'])
+                })
+                .catch(err => {
+                    console.log(err)
+                    reject("Erro ao tentar buscar pilotos.")
+                })
+            }
+        )
+    }
 }

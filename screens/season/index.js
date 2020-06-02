@@ -10,7 +10,7 @@ class Season extends Component {
     }
 
     componentDidMount() {
-        new F1APIService().getSeasonInfo(this.props.route.params.year.season)
+        new F1APIService().getSeasonInfo(this.props.route.params.year)
         .then(seasonInfo => this.setState({ races: seasonInfo, loading: false }) )
         .catch(error => console.error(error) )
     }

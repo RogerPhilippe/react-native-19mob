@@ -10,16 +10,16 @@ const style = StyleSheet.create({
     }
 });
 
-const Seasons = ({ data, handlerSeason }) => {
+const Items = ({ data, year, handlerSeason }) => {
 
     data = data.reverse()
 
-    return data.map(year => (
-        <Button key={year.season} style={style.button} onPress={ () => handlerSeason('Menu', { year })} >
-            <Text uppercase="true">{ year.season }</Text>
+    return data.map(item => (
+        <Button key={item.id} style={style.button} onPress={ () => handlerSeason(item.screen, { year })} >
+            <Text uppercase='true'>{ item.name }</Text>
         </Button> 
     ));
 
 }
 
-export default Seasons;
+export default Items;

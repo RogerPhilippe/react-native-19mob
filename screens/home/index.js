@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Text, View, Spinner } from 'native-base';
+import { View, Spinner } from 'native-base';
 import { F1APIService } from '../../services/F1APIService';
 
 
