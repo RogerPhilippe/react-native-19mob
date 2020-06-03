@@ -17,13 +17,15 @@ class Menu extends Component {
     state = {
         items: [
             {id: 1, name: 'Corridas', screen: 'Season'}, 
-            {id: 2, name: 'Pilotos', screen: 'Pilots'}
+            {id: 2, name: 'Pilotos', screen: 'Pilots'},
+            {id: 3, name: 'Classificação', screen: 'ClassificationMenu'}
         ],
         year: ''
     }
 
     componentDidMount() {
         const year = this.props.route.params.year.season;
+
         this.setState({ year })
     }
 

@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
-import { Text, Container, Header, Content, Accordion, View, Spinner } from "native-base";
+import { Text, Container, Header, Content, Accordion, View, Spinner, Body, Title } from "native-base";
 import { F1APIService } from '../../services/F1APIService';
 
 class Pilots extends Component {
 
     state = {
         pilots: [],
-        loading: true
+        loading: true,
+        season: ''
     }
 
     componentDidMount() {
-        new F1APIService().getPilots(this.props.route.params.year)
-        .then(pilots => this.setState({ pilots, loading: false }))
+        const season = this.props.route.params.year
+        new F1APIService().getPilots(season)
+        .then(pilots => this.setState({ pilots, loading: false, season }))
         .catch(error => console.log(error))
     }
 
@@ -36,7 +38,11 @@ class Pilots extends Component {
                     this.state.loading ? 
                     <Spinner color='green'/> : 
                     <Container>
-                        <Header />
+                        <Header>
+                            <Body>
+                                <Title>{ `Temporada ${this.state.season}` }</Title>
+                            </Body>
+                        </Header>
                         <Content padder>
                             { this.renderPilots() }
                         </Content>

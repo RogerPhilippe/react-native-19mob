@@ -11,13 +11,14 @@ const styles = StyleSheet.create({
     }
 });
 
-const Header = () => {
+const Header = ({ title, showImage }) => {
     return (
         <View>
-            <Image 
+            { showImage ? <Image 
                 style={styles.tinyLogo}
                 source={f1logo} 
-            />
+            /> : null }
+            <Text>{ title }</Text>
         </View>
     );
 }
