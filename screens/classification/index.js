@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Text, View, Spinner } from "native-base";
+import { View } from "native-base";
 import { F1APIService } from '../../services/F1APIService';
 
-import Items from './components/Items'
+import MenuItems from './components/MenuItems'
 
 class ClassificationMenu extends Component {
 
@@ -20,7 +20,7 @@ class ClassificationMenu extends Component {
     render() {
         return(
             <View>
-                <Items data={ this.state.races } handlerSeason={ this.props.navigation.navigate } />
+                <MenuItems data={ this.state.races } handlerSeason={ this.props.navigation.navigate } />
             </View>
         );
     }

@@ -12,23 +12,18 @@ const style = StyleSheet.create({
     }
 });
 
-class Menu extends Component {
+class AllWinnersMenu extends Component {
 
     state = {
         items: [
-            {id: 1, name: 'Corridas', screen: 'Season'}, 
-            {id: 2, name: 'Pilotos', screen: 'Pilots'},
-            {id: 3, name: 'Equipes', screen: 'Constructors'},
-            {id: 4, name: 'Classificação', screen: 'ClassificationMenu'},
-            {id: 5, name: 'Pontuações Pilotos', screen: 'PilotsWinners'},
-            {id: 6, name: 'Pontuações Equipes', screen: 'ConstructorsWinners'},
-            {id: 7, name: 'Campeões de todos os tempos', screen: 'AllWinners'}
+            {id: 1, name: 'Pilotos', screen: 'AllPilotsWinners'}, 
+            {id: 2, name: 'Equipes', screen: 'AllConstructorsWinners'}
         ],
         year: ''
     }
 
     componentDidMount() {
-        const year = this.props.route.params.year.season;
+        const year = this.props.route.params.year;
 
         this.setState({ year })
     }
@@ -42,4 +37,4 @@ class Menu extends Component {
     }
 }
 
-export default Menu;
+export default AllWinnersMenu;

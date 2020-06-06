@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Text, Container, Header, Content, Accordion, View, Spinner, Body, Title } from "native-base";
+import { Container, Header, Content, View, Spinner, Body, Title } from "native-base";
 import { F1APIService } from '../../services/F1APIService';
-import { concat } from 'react-native-reanimated';
+import Items from './components/Items';
 
 class Pilots extends Component {
 
@@ -26,29 +26,6 @@ class Pilots extends Component {
 
     }
 
-    renderClassification() {
-        const { classification } = this.state;
-
-        if(classification) {
-
-            const qualifyingResults = classification.QualifyingResults
-
-            var accordionItens = []
-            qualifyingResults.forEach(qualifyingResult => accordionItens.push( 
-                { 
-                    title: `${qualifyingResult.Driver.familyName}, ${qualifyingResult.Driver.givenName}`, 
-                    content: `Equipe: ${qualifyingResult.Constructor.name}\nNacionalidade: ${qualifyingResult.Constructor.nationality}\n` +
-                    `Q1: ${qualifyingResult.Q1} | Q2: ${qualifyingResult.Q2} | Q3: ${qualifyingResult.Q3}`
-                }
-                ))
-
-            return (<Accordion dataArray={accordionItens} expanded={0} />)
-        } else {
-            return (<Text>Sem resultados no momento.</Text>)
-        }
-
-    }
-
     render() {
         return(
             <View>
@@ -62,7 +39,7 @@ class Pilots extends Component {
                             </Body>
                         </Header>
                         <Content padder>
-                            { this.renderClassification() }
+                            <Items classification={ this.state.classification } />
                         </Content>
                     </Container>
                  }

@@ -1,25 +1,20 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, View, Spinner, Body, Title } from "native-base";
-import { F1APIService } from '../../services/F1APIService';
+import { F1APIService } from '../../../services/F1APIService';
 
 import Items from './components/Items'
 
-class Pilots extends Component {
+class AllPilotsWinners extends Component {
 
     state = {
         pilots: [],
-        loading: true,
-        season: ''
+        loading: true
     }
 
     componentDidMount() {
-        const season = this.props.route.params.year
-        new F1APIService().getPilots(season)
-        .then(pilots => this.setState({ pilots, loading: false, season }))
-        .catch(error => {
-            console.log(error)
-            this.setState({ loading: false, season })
-        })
+        new F1APIService().getDriverStandings()
+        .then(pilots => this.setState({ pilots, loading: false }))
+        .catch(error => console.log(error))
     }
 
     render() {
@@ -31,7 +26,7 @@ class Pilots extends Component {
                     <Container>
                         <Header>
                             <Body>
-                                <Title>{ `Temporada ${this.state.season}` }</Title>
+                                <Title>{ `Campeões de 2000 até 2019` }</Title>
                             </Body>
                         </Header>
                         <Content padder>
@@ -45,4 +40,4 @@ class Pilots extends Component {
 
 }
 
-export default Pilots;
+export default AllPilotsWinners;

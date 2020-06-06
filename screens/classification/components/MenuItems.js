@@ -10,15 +10,13 @@ const style = StyleSheet.create({
     }
 });
 
-const Seasons = ({ data, handlerSeason }) => {
+const MenuItems = ({ data, handlerSeason }) => {
 
     if (data && handlerSeason) {
 
-        data = data.reverse()
-
-        return data.map(year => (
-            <Button key={year.season} style={style.button} onPress={ () => handlerSeason('Menu', { year })} >
-                <Text uppercase="true">{ year.season }</Text>
+        return data.map(race => (
+            <Button key={race.round} style={style.button} onPress={ () => handlerSeason('Classification', { race })} >
+                <Text uppercase='true'>{ race.raceName }</Text>
             </Button> 
         ));
 
@@ -26,4 +24,4 @@ const Seasons = ({ data, handlerSeason }) => {
 
 }
 
-export default Seasons;
+export default MenuItems;

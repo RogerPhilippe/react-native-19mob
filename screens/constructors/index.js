@@ -4,22 +4,19 @@ import { F1APIService } from '../../services/F1APIService';
 
 import Items from './components/Items'
 
-class Pilots extends Component {
+class Constructors extends Component {
 
     state = {
-        pilots: [],
+        constructors: [],
         loading: true,
         season: ''
     }
 
     componentDidMount() {
         const season = this.props.route.params.year
-        new F1APIService().getPilots(season)
-        .then(pilots => this.setState({ pilots, loading: false, season }))
-        .catch(error => {
-            console.log(error)
-            this.setState({ loading: false, season })
-        })
+        new F1APIService().getConstructors(season)
+        .then(constructors => this.setState({ constructors, loading: false, season }))
+        .catch(error => console.log(error))
     }
 
     render() {
@@ -35,7 +32,7 @@ class Pilots extends Component {
                             </Body>
                         </Header>
                         <Content padder>
-                            <Items pilots={ this.state.pilots } />
+                            <Items constructors={ this.state.constructors } />
                         </Content>
                     </Container>
                  }
@@ -45,4 +42,4 @@ class Pilots extends Component {
 
 }
 
-export default Pilots;
+export default Constructors;

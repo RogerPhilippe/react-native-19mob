@@ -5,7 +5,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "build-android": "node ./node_modules/react-native-cli/index.js bundle --dev false --platform android --entry-file app.js --bundle-output ./android/app/src/main/assets/index.android.bundle --assets-dest ./android/app/src/main/res"
   },
   "dependencies": {
     "@react-native-community/masked-view": "0.1.6",
@@ -24,7 +25,8 @@
   },
   "devDependencies": {
     "babel-preset-expo": "~8.1.0",
-    "@babel/core": "^7.8.6"
+    "@babel/core": "^7.8.6",
+    "react-native-cli": "^2.0.1"
   },
   "private": true
 }
